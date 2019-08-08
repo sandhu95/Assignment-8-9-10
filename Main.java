@@ -13,6 +13,29 @@ public class Main {
 		B1.setData("Data Changed");
 		System.out.println("New Data for first Block is: " + B1.getData());
 		System.out.println("New hash Code for first Block is: " + B1.getHash());
+		
+		//creating an array to store blockChain
+		BlockChain[] BlockChainArray= new BlockChain[5];
+		
+		BlockChainArray[0]= B1;
+		
+		System.out.println();
+		
+		//creating the series blocks of blockChain and assume the number of blocks to be 5
+		for(int i=1; i<BlockChainArray.length; i++)
+		{
+			BlockChainArray[i]= new BlockChain("",BlockChainArray[i-1].getHash());
+			
+		}
+		
+		System.out.println("Following are the Blocks created in the BlockChain: ");
+		
+		//printing the data and hash codes of whole BlockChain
+		for(int i=0; i<BlockChainArray.length; i++)
+		{
+			System.out.println("Data for number "+(i)+" Block is: "+BlockChainArray[i].getData());
+			System.out.println("Hash for number "+(i)+" Block is: "+BlockChainArray[i].getHash());
+		}
 	}
 
 }
