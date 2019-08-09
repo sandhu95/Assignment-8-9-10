@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+import java.util.Date;
 
 public class BlockChain {
 	// declaring the properties of the class
 	private int hash;
 	private int previousHash;
 	private String data;
+	private long timeStamp;
 
 	// creating the constructor to initialize the genesis block
 	public BlockChain(String data) {
@@ -58,7 +61,7 @@ public class BlockChain {
 	}
 
 	// Methods
-	// Method to validate the blockChain
+	// Method to validate the blockChain of type array
 	public String transactionValidator(BlockChain[] B) {
 		Boolean answer = true;
 		for (int i = 1; i < B.length; i++) {
@@ -72,6 +75,35 @@ public class BlockChain {
 			return "BlockChain is Valid!";
 		else
 			return "BlockChain is inValid!";
+	}
+
+	// Method to validate the blockChain of type arrayList
+	public String transactionValidator(ArrayList<BlockChain> B) {
+		Boolean answer = true;
+		for (int i = 1; i < B.size(); i++) {
+			if (B.get(i).getPreviousHash() == B.get(i - 1).getHash()) {
+				answer = true;
+			} else
+				answer = false;
+
+		}
+		if (answer)
+			return "Newly added Coin is valid!";
+		else
+			return "Newly added Coin is valid!";
+	}
+
+	// Method to generate the valid nonsense coin, i.e. mining a nonsense coin
+	public Boolean AddCoins(int newHash) {
+		String newHash1 = Integer.toString(newHash);
+		Boolean result = true;
+		while (true) {
+			timeStamp = new Date().getTime();
+			newHash1 = Integer.toString((newHash1 + timeStamp).hashCode());
+			if (newHash1.contains("1100"))
+				break;
+		}
+		return result;
 	}
 
 }
