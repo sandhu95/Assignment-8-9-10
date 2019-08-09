@@ -19,7 +19,7 @@ public class BlockChain {
 
 	// creating constructor to create further blocks in blockChain
 	public BlockChain(String data, int previousHash) {
-		System.out.println(previousHash);
+
 		// setting the data
 		this.data = data;
 
